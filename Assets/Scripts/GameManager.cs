@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -32,5 +31,11 @@ public class GameManager : MonoBehaviour
     var followCameraScript = camera.GetComponent<CameraFollow>();
     if (followCameraScript && _players.Count > 0)
       followCameraScript.SetTarget(_players[0].transform);
+  }
+  
+  public void MoveRight()
+  {
+    if (_players.Count > 0)
+      _players[0].MoveOneCell(1, Vector3.right);
   }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
   private Vector3 _playerVelocity;
   private float _turnSmoothVelocity;
   private Vector3 _moveDir;
+  private bool isMoving;
 
   public void SetPlayer(IInput input, Color color)
   {
@@ -48,5 +50,30 @@ public class Player : MonoBehaviour
 
     _playerVelocity.y += GravityValue * Time.deltaTime;
     _controller.Move(_moveDir.normalized * Time.deltaTime * speed + _playerVelocity * Time.deltaTime);
+  }
+
+  public void MoveOneCell(float offset, Vector3 direction)
+  {
+    var directionRay = new Ray(transform.position, direction);
+    if (!Physics.Raycast(directionRay, out var hit, offset) && !isMoving)
+    {
+      isMoving = true;
+      
+      var newPos = transform.position + direction * offset;
+      StartCoroutine(MoveToOffset(newPos));
+    }
+  }
+
+  private IEnumerator MoveToOffset(Vector3 newPosition)
+  {
+    while (Vector3.Distance(transform.position, newPosition) > 0.01f)
+    {
+      var smoothedPosition = Vector3.Lerp(transform.position, newPosition, 0.2f);
+      transform.position = smoothedPosition;
+      
+      yield return null;
+    }
+
+    isMoving = false;
   }
 }
