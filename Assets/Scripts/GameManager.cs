@@ -38,4 +38,24 @@ public class GameManager : MonoBehaviour
     if (_players.Count > 0)
       _players[0].MoveOneCell(1, Vector3.right);
   }
+
+  public void MovePlayer(string data)
+  {
+    if (data.ToLower().Contains("вверх"))
+    {
+      _players[0].MoveOneCell(1, Vector3.back);
+    }
+    else if (data.ToLower().Contains("вниз"))
+    {
+      _players[0].MoveOneCell(1, Vector3.forward);
+    }
+    else if (data.ToLower().Contains("лево"))
+    {
+      _players[0].MoveOneCell(1, Vector3.left);
+    }
+    else if (data.ToLower().Contains("право"))
+    {
+      _players[0].MoveOneCell(1, Vector3.right);
+    }
+  }
 }

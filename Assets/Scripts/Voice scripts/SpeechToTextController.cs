@@ -9,8 +9,12 @@ public class SpeechToTextController : MonoBehaviour
   public float pitch = 1;
   public float rate = 1;
 
-  void Start()
+  private GameManager _gameManager;
+
+  private void Start()
   {
+    _gameManager = GetComponent<GameManager>();
+    
     Setting("ru-RU");
     SpeechToText.instance.onResultCallback = OnResultSpeech;
   }
@@ -32,9 +36,10 @@ public class SpeechToTextController : MonoBehaviour
 #endif
   }
 
-  void OnResultSpeech(string _data)
+  private void OnResultSpeech(string _data)
   {
     inputText.text = _data;
+    _gameManager.MovePlayer(_data);
   }
 
   public void OnClickSpeak()
