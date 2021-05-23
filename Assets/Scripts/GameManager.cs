@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
   private void Start()
   {
-    CreatePlayers(new List<IInput> {new KeyboardInput("Player 1", "#09FF0064")});
+    CreatePlayers(new List<IInput> {new KeyboardInput("Player 1", "#042069")});
   }
 
   public void CreatePlayers(List<IInput> inputs)
@@ -21,13 +21,14 @@ public class GameManager : MonoBehaviour
     {
       GameObject playerGameObject =
         Instantiate(playerPrefab, playersSpawnPosition[i].position, Quaternion.identity, playersRoot);
+      playerGameObject.name = inputs[i].Name;
       var player = playerGameObject.GetComponent<Player>();
       player.SetPlayer(inputs[i], inputs[i].Color);
 
       _players.Add(player);
     }
 
-    Camera camera = Camera.main;
+    var camera = Camera.main;
     var followCameraScript = camera.GetComponent<CameraFollow>();
     if (followCameraScript && _players.Count > 0)
       followCameraScript.SetTarget(_players[0].transform);

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
 
 public class Player : MonoBehaviour
 {
@@ -14,20 +13,16 @@ public class Player : MonoBehaviour
   private Vector3 _playerVelocity;
   private float _turnSmoothVelocity;
   private Vector3 _moveDir;
-  private Light _pointLight;
 
   public void SetPlayer(IInput input, Color color)
   {
     PlayersInput = input;
-    _pointLight = GetComponentInChildren<Light>();
-    _pointLight.color = color;
+    var pointLight = GetComponentInChildren<Light>();
+    pointLight.color = color;
   }
 
-  private void Awake()
-  {
+  private void Awake() => 
     _controller = GetComponent<CharacterController>();
-    //PlayersInput = new KeyboardInput();
-  }
 
   private void Update() =>
     Move();
