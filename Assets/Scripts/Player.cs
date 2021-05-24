@@ -76,4 +76,10 @@ public class Player : MonoBehaviour
 
     isMoving = false;
   }
+
+  public bool IsFreeDirection(Vector3 direction, float offset)
+  {
+    var directionRay = new Ray(transform.position, direction);
+    return (!Physics.Raycast(directionRay, out var hit, offset) && !isMoving);
+  }
 }

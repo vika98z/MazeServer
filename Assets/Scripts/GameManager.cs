@@ -41,21 +41,42 @@ public class GameManager : MonoBehaviour
 
   public void MovePlayer(string data)
   {
-    if (data.ToLower().Contains("вверх"))
-    {
-      _players[0].MoveOneCell(1, Vector3.back);
-    }
-    else if (data.ToLower().Contains("вниз"))
+    if (data.ToLower().Contains("верх"))
     {
       _players[0].MoveOneCell(1, Vector3.forward);
     }
-    else if (data.ToLower().Contains("лево"))
+    else if (data.ToLower().Contains("низ"))
+    {
+      _players[0].MoveOneCell(1, Vector3.back);
+    }
+    else if (data.ToLower().Contains("лев"))
     {
       _players[0].MoveOneCell(1, Vector3.left);
     }
-    else if (data.ToLower().Contains("право"))
+    else if (data.ToLower().Contains("прав"))
     {
       _players[0].MoveOneCell(1, Vector3.right);
     }
+  }
+
+  public string GetFreeDirections()
+  {
+    var res = "";
+    if (_players[0].IsFreeDirection(Vector3.forward, 1))
+      res += "вверх, ";
+    if (_players[0].IsFreeDirection(Vector3.back, 1))
+      res += "вниз, ";
+    if (_players[0].IsFreeDirection(Vector3.left, 1))
+      res += "влево, ";
+    if (_players[0].IsFreeDirection(Vector3.right, 1))
+      res += "вправо, ";
+    
+    string[] words = res.Split(',');
+    int i = Random.Range(0, words.Length);
+    string word = words[i];
+
+    MovePlayer(word);
+
+    return word;
   }
 }

@@ -13,12 +13,16 @@ public class SampleSpeechToText : MonoBehaviour
     public Text txtLocale;
     public Text txtPitch;
     public Text txtRate;
+
+    private GameManager _gameManager;
+    
     void Start()
     {
-        Setting("en-US");
+        _gameManager = FindObjectOfType<GameManager>();
+        
+        Setting("ru-RU");
         loading.SetActive(false);
         SpeechToText.instance.onResultCallback = OnResultSpeech;
-
     }
     
 
@@ -44,14 +48,16 @@ public class SampleSpeechToText : MonoBehaviour
     void OnResultSpeech(string _data)
     {
         inputText.text = _data;
-#if UNITY_IOS
-        loading.SetActive(false);
-#endif
+
+        _gameManager.MovePlayer(_data);
+
     }
     public void OnClickSpeak()
     {
-        TextToSpeech.instance.StartSpeak(inputText.text);
+        var textToSpeech = _gameManager.GetFreeDirections();
+        TextToSpeech.instance.StartSpeak(textToSpeech);
     }
+    
     public void  OnClickStopSpeak()
     {
         TextToSpeech.instance.StopSpeak();
