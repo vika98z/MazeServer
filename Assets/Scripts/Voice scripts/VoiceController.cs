@@ -1,82 +1,36 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TextSpeech;
-using UnityEngine.UI;
-using UnityEngine.Android;
+using UnityEngine.Events;
 
 public class VoiceController : MonoBehaviour
 {
-    private string LANG_CODE_US = "en-US";
-    private string LANG_CODE_RUS = "ru-RUS";
-    [SerializeField]
-    Text uiText;
+  [SerializeField] private SampleSpeechToText sample;
+  public int RecordingTime = 5;
 
-    private void Start()
-    {
-        Setup(LANG_CODE_US);
-#if UNITY_ANDROID
-        if (!Permission.HasUserAuthorizedPermission(Permission.Microphone))
-            Permission.RequestUserPermission(Permission.Microphone);
-        SpeechToText.instance.onPartialResultsCallback = OnPartialSpeechResult;
-#endif
-        SpeechToText.instance.onResultCallback = OnFinalSpeechResult;
-        TextToSpeech.instance.onStartCallBack = OnSpeakStart;
-        TextToSpeech.instance.onDoneCallback = OnSpeakStop;
-    }
+  public UnityAction OnStartRecording;
+  public UnityAction OnStopRecording;
 
+  private void Start() => 
+    StartCoroutine(ContinueRecording(RecordingTime));
 
-    #region Text to Speech
+  private IEnumerator ContinueRecording(int sec)
+  {
+    yield return new WaitForSeconds(1);
+    StartRecording();
+    yield return new WaitForSeconds(sec);
+    StopRecording();
+  }
 
-    public void StartSpeaking(string message)
-    {
-        TextToSpeech.instance.StartSpeak(message);
-    }
+  public void StartRecording()
+  {
+    OnStartRecording?.Invoke();
+    
+    SampleSpeechToText.StartRecording();
+  }
 
-    public void StopSpeaking()
-    {
-        TextToSpeech.instance.StopSpeak();
-    }
-
-    void OnSpeakStart()
-    {
-        Debug.Log("Talking started...");
-    }
-
-    void OnSpeakStop()
-    {
-        Debug.Log("Talking stopped...");
-    }
-
-    #endregion
-
-    #region Speech To Text
-
-    public void StartListening()
-    {
-        SpeechToText.instance.StartRecording();
-    }
-
-    public void StopListening()
-    {
-        SpeechToText.instance.StopRecording();
-    }
-
-    void OnFinalSpeechResult(string message)
-    {
-        uiText.text = message;
-    }
-
-    void OnPartialSpeechResult(string message)
-    {
-        uiText.text = message;
-    }
-
-    #endregion
-
-    void Setup(string lengCode)
-    {
-        TextToSpeech.instance.Setting(lengCode, 1, 1);
-        SpeechToText.instance.Setting(lengCode);
-    }
+  public void StopRecording()
+  {
+    OnStopRecording?.Invoke();
+    sample.StopRecording();
+  }
 }

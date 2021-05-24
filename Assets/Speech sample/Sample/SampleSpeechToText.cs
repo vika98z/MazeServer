@@ -4,29 +4,20 @@ using TextSpeech;
 
 public class SampleSpeechToText : MonoBehaviour
 {
-    public GameObject loading;
-    public InputField inputLocale;
     public InputField inputText;
     public float pitch;
     public float rate;
 
-    public Text txtLocale;
-    public Text txtPitch;
-    public Text txtRate;
-
     private GameManager _gameManager;
-    
-    void Start()
+
+    private void Start()
     {
         _gameManager = FindObjectOfType<GameManager>();
-        
         Setting("ru-RU");
-        loading.SetActive(false);
         SpeechToText.instance.onResultCallback = OnResultSpeech;
     }
-    
 
-    public void StartRecording()
+    public static void StartRecording()
     {
 #if UNITY_EDITOR
 #else
@@ -41,37 +32,26 @@ public class SampleSpeechToText : MonoBehaviour
 #else
         SpeechToText.instance.StopRecording();
 #endif
-#if UNITY_IOS
-        loading.SetActive(true);
-#endif
     }
-    void OnResultSpeech(string _data)
+
+    private void OnResultSpeech(string data)
     {
-        inputText.text = _data;
-
-        _gameManager.MovePlayer(_data);
-
+        inputText.text = data;
+        _gameManager.MovePlayer(data);
     }
+    
     public void OnClickSpeak()
     {
-        var textToSpeech = _gameManager.GetFreeDirections();
+        string textToSpeech = _gameManager.GetFreeDirections();
         TextToSpeech.instance.StartSpeak(textToSpeech);
     }
     
-    public void  OnClickStopSpeak()
-    {
+    public void  OnClickStopSpeak() => 
         TextToSpeech.instance.StopSpeak();
-    }
+
     public void Setting(string code)
     {
         TextToSpeech.instance.Setting(code, pitch, rate);
         SpeechToText.instance.Setting(code);
-        txtLocale.text = "Locale: " + code;
-        txtPitch.text = "Pitch: " + pitch;
-        txtRate.text = "Rate: " + rate;
-    }
-    public void OnClickApply()
-    {
-        Setting(inputLocale.text);
     }
 }

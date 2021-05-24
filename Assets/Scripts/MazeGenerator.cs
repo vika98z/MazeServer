@@ -48,6 +48,6 @@ public class MazeGenerator : MonoBehaviour
         var newPos = new Vector3(startPosition.x + j * cellStep + xOffset * cellStep, startPosition.y,
             startPosition.z + -1 * (i * cellStep + zOffset * cellStep));
 
-        var wall = Instantiate(blockPrefab, newPos, Quaternion.Euler(0, rotation, 0), wallsRoot);
+        Instantiate(blockPrefab, newPos, Quaternion.Euler(0, rotation, 0), wallsRoot);
     }
 }

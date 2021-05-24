@@ -1,50 +1,75 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
-using System;
-using UnityEngine.Events;
 
 public class SpeechButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public SampleSpeechToText sample;
-    public GameObject effect;
-    public float speedEffect = 1;
-    public float scaleEffect = 1.2f;
-    float speed;
-    float scale = 1;
+  public GameObject effect;
+  public float speedEffect = 1;
+  public float scaleEffect = 1.2f;
+  private float _speed;
+  private float _scale = 1;
 
-    void Start()
-    {
-        effect.SetActive(false);
-        speed = speedEffect;
-    }
-    void Update()
-    {
-        if (effect.activeSelf)
-        {
-            scale += Time.deltaTime * speed;
-            if (scale > scaleEffect)
-            {
-                speed = -speedEffect;
-            }
-            if (scale < scaleEffect - 0.1f)
-            {
-                speed = speedEffect;
-            }
-            effect.transform.localScale = new Vector3(scale, scale, 1);
-        }
-    }
+  private VoiceController _voiceController;
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        effect.SetActive(true);
-        scale = 1;
-        sample.StartRecording();
-    }
+  private void Awake()
+  {
+    _voiceController = FindObjectOfType<VoiceController>();
+    
+    _voiceController.OnStartRecording += OnStartRecording;
+    _voiceController.OnStopRecording += OnStopRecording;
+  }
 
-    public void OnPointerUp(PointerEventData eventData)
+  private void Start()
+  {
+    effect.SetActive(false);
+    _speed = speedEffect;
+  }
+
+  private void Update() =>
+    AnimateButton();
+
+  private void OnDisable()
+  {
+    _voiceController.OnStartRecording -= OnStartRecording;
+    _voiceController.OnStopRecording -= OnStopRecording;
+  }
+
+  public void OnPointerDown(PointerEventData eventData) =>
+    _voiceController.StartRecording();
+
+  public void OnPointerUp(PointerEventData eventData) =>
+    _voiceController.StopRecording();
+
+  private void OnStartRecording()
+  {
+    print("start");
+    effect.SetActive(true);
+    _scale = 1;
+  }
+
+  private void OnStopRecording()
+  {
+    
+    effect.SetActive(false);
+    print("stop");
+
+  }
+
+
+  private void AnimateButton()
+  {
+    if (effect.activeSelf)
     {
-        effect.SetActive(false);
-        sample.StopRecording();
+      _scale += Time.deltaTime * _speed;
+      if (_scale > scaleEffect)
+        _speed = -speedEffect;
+
+      if (_scale < scaleEffect - 0.1f)
+        _speed = speedEffect;
+
+      effect.transform.localScale = new Vector3(_scale, _scale, 1);
     }
+  }
 }
