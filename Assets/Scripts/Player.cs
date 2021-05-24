@@ -60,6 +60,9 @@ public class Player : MonoBehaviour
       isMoving = true;
       
       var newPos = transform.position + direction * offset;
+      float targetAngle = Vector3.SignedAngle(transform.forward, direction, Vector3.up);
+
+      transform.rotation = Quaternion.Euler(0f, transform.eulerAngles.y + targetAngle, 0f);
       StartCoroutine(MoveToOffset(newPos));
     }
   }
@@ -79,7 +82,7 @@ public class Player : MonoBehaviour
 
   public bool IsFreeDirection(Vector3 direction, float offset)
   {
-    var directionRay = new Ray(transform.position, direction);
+    var directionRay = new Ray(transform.position,   direction);
     return (!Physics.Raycast(directionRay, out var hit, offset) && !isMoving);
   }
 }

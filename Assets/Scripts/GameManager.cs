@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
   private List<Player> _players = new List<Player>();
 
+  private string _lastMove = "";
+
   private void Start()
   {
     CreatePlayers(new List<IInput> {new KeyboardInput("Player 1", "#042069")});
@@ -32,7 +34,7 @@ public class GameManager : MonoBehaviour
     if (followCameraScript && _players.Count > 0)
       followCameraScript.SetTarget(_players[0].transform);
   }
-  
+
   public void MoveRight()
   {
     if (_players.Count > 0)
@@ -41,42 +43,34 @@ public class GameManager : MonoBehaviour
 
   public void MovePlayer(string data)
   {
-    if (data.ToLower().Contains("верх"))
-    {
-      _players[0].MoveOneCell(1, Vector3.forward);
-    }
-    else if (data.ToLower().Contains("низ"))
-    {
-      _players[0].MoveOneCell(1, Vector3.back);
-    }
-    else if (data.ToLower().Contains("лев"))
-    {
-      _players[0].MoveOneCell(1, Vector3.left);
-    }
+    if (data.ToLower().Contains("перед") || data.ToLower().Contains("перёд"))
+      _players[0].MoveOneCell(1, _players[0].transform.forward);
+    else if (data.ToLower().Contains("зад"))
+      _players[0].MoveOneCell(1, _players[0].transform.forward * -1);
+    else if (data.ToLower().Contains("лев") || data.ToLower().Contains("лёв"))
+      _players[0].MoveOneCell(1, _players[0].transform.right * -1);
     else if (data.ToLower().Contains("прав"))
-    {
-      _players[0].MoveOneCell(1, Vector3.right);
-    }
+      _players[0].MoveOneCell(1, _players[0].transform.right);
   }
 
   public string GetFreeDirections()
   {
     var res = "";
-    if (_players[0].IsFreeDirection(Vector3.forward, 1))
-      res += "вверх, ";
-    if (_players[0].IsFreeDirection(Vector3.back, 1))
-      res += "вниз, ";
-    if (_players[0].IsFreeDirection(Vector3.left, 1))
-      res += "влево, ";
-    if (_players[0].IsFreeDirection(Vector3.right, 1))
-      res += "вправо, ";
-    
-    string[] words = res.Split(',');
-    int i = Random.Range(0, words.Length);
-    string word = words[i];
 
-    MovePlayer(word);
+    if (_players[0].IsFreeDirection(_players[0].transform.right * -1, 1))
+      res = "влево";
+    else if (_players[0].IsFreeDirection(_players[0].transform.forward, 1))
+      res = "вперёд";
+    else if (_players[0].IsFreeDirection(_players[0].transform.right, 1))
+      res = "вправо";
+    else if (_players[0].IsFreeDirection(_players[0].transform.forward * -1, 1))
+      res = "назад";
 
-    return word;
+    _lastMove = res;
+
+    return res;
   }
+
+  public void MakeLastMove() =>
+    MovePlayer(_lastMove);
 }

@@ -2,23 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ed06022-6347-4360-8df1-1557e1c2df04" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.MazeServer/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.MazeServer/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.MazeServer/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.MazeServer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Test Wall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Test Wall.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Third Person Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Third Person Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MazeServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MazeServer/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main level.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MazeGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MazeGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Voice scripts/SpeechToTextController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Voice scripts/SpeechToTextController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Speech sample/Sample/SampleSpeechToText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Speech sample/Sample/SampleSpeechToText.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Speech sample/Sample/SpeechButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Speech sample/Sample/SpeechButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,13 +15,16 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://D:/Program Files/Unity/Editor/2019.3.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/Scripts/MazeGenerator.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Player.cs" />
       <option value="$PROJECT_DIR$/Assets/Speech sample/Sample/SampleSpeechToText.cs" />
       <option value="$PROJECT_DIR$/Assets/Speech sample/Sample/SpeechButton.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Player.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1sxIMfBT5n70ZEeHxFVENZx6woD" />
@@ -44,6 +34,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -61,10 +53,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="12168">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="12168" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -81,7 +73,7 @@
       <option name="presentableId" value="Default" />
       <updated>1621807771177</updated>
       <workItem from="1621808479914" duration="1185000" />
-      <workItem from="1621827437046" duration="4700000" />
+      <workItem from="1621827437046" duration="9461000" />
     </task>
     <servers />
   </component>
@@ -92,5 +84,50 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Speech sample/Sample/SampleSpeechToText.cs</url>
+          <line>55</line>
+          <properties documentPath="C:\Users\stety\Documents\MazeServer\Assets\Speech sample\Sample\SampleSpeechToText.cs" initialLine="55" containingFunctionPresentation="method 'OnClickSpeak'">
+            <startOffsets>
+              <option value="1123" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1124" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs</url>
+          <line>65</line>
+          <properties documentPath="C:\Users\stety\Documents\MazeServer\Assets\Scripts\GameManager.cs" initialLine="65" containingFunctionPresentation="method 'GetFreeDirections'">
+            <startOffsets>
+              <option value="1839" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1852" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Player.cs</url>
+          <line>59</line>
+          <properties documentPath="C:\Users\stety\Documents\MazeServer\Assets\Scripts\Player.cs" initialLine="59" containingFunctionPresentation="method 'MoveOneCell'">
+            <startOffsets>
+              <option value="1739" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1755" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
