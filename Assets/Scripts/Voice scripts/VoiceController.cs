@@ -10,10 +10,15 @@ public class VoiceController : MonoBehaviour
   public UnityAction OnStartRecording;
   public UnityAction OnStopRecording;
 
-  private void Start() => 
-    StartCoroutine(ContinueRecording(RecordingTime));
+  private void Start()
+  {
+    if (PlayerPrefs.GetString("mode") == "player")
+      StartCoroutine(StartRecording(RecordingTime));
+    else
+      StartCoroutine(StartPlaying(RecordingTime));
+  }
 
-  private IEnumerator ContinueRecording(int sec)
+  private IEnumerator StartRecording(int sec)
   {
     yield return new WaitForSeconds(1);
     StartRecording();
@@ -21,10 +26,15 @@ public class VoiceController : MonoBehaviour
     StopRecording();
   }
 
+  private IEnumerator StartPlaying(int sec)
+  {
+    yield return new WaitForSeconds(1);
+  }
+
   public void StartRecording()
   {
     OnStartRecording?.Invoke();
-    
+
     SampleSpeechToText.StartRecording();
   }
 

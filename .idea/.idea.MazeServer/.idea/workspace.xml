@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8ed06022-6347-4360-8df1-1557e1c2df04" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MazeServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MazeServer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MazeGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MazeGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main level.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Voice scripts/VoiceController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Voice scripts/VoiceController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Speech sample/Sample/SampleSpeechToText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Speech sample/Sample/SampleSpeechToText.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Speech sample/Sample/SpeechButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Speech sample/Sample/SpeechButton.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +16,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://D:/Program Files/Unity/Editor/2019.3.6f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MenuButtons.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -27,6 +26,7 @@
       <option value="$PROJECT_DIR$/Assets/Speech sample/Sample/SampleSpeechToText.cs" />
       <option value="$PROJECT_DIR$/Assets/Speech sample/Sample/SpeechButton.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Voice scripts/VoiceController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/MenuButtons.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1sxIMfBT5n70ZEeHxFVENZx6woD" />
@@ -78,6 +78,7 @@
       <workItem from="1621827437046" duration="10296000" />
       <workItem from="1621853500422" duration="2654000" />
       <workItem from="1621891393982" duration="2466000" />
+      <workItem from="1622316577134" duration="1152000" />
     </task>
     <servers />
   </component>
@@ -86,6 +87,17 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
