@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
     _controller.Move(_moveDir.normalized * Time.deltaTime * speed + _playerVelocity * Time.deltaTime);
   }
 
-  public void MoveOneCell(float offset, Vector3 direction)
+  public bool MoveOneCell(float offset, Vector3 direction)
   {
     var directionRay = new Ray(transform.position, direction);
     if (!Physics.Raycast(directionRay, out var hit, offset) && !isMoving)
@@ -64,7 +64,10 @@ public class Player : MonoBehaviour
 
       transform.rotation = Quaternion.Euler(0f, transform.eulerAngles.y + targetAngle, 0f);
       StartCoroutine(MoveToOffset(newPos));
+      return true;
     }
+
+    return false;
   }
 
   private IEnumerator MoveToOffset(Vector3 newPosition)

@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
   [SerializeField] private Transform playersRoot;
   [SerializeField] private Transform[] playersSpawnPosition;
 
+  public bool LastMoveWasSucceed = false;
+
   private List<Player> _players = new List<Player>();
 
   private string _lastMove = "";
@@ -41,16 +43,28 @@ public class GameManager : MonoBehaviour
       _players[0].MoveOneCell(1, Vector3.right);
   }
 
-  public void MovePlayer(string data)
+  public bool MovePlayer(string data)
   {
     if (data.ToLower().Contains("перед") || data.ToLower().Contains("перёд"))
-      _players[0].MoveOneCell(1, _players[0].transform.forward);
-    else if (data.ToLower().Contains("зад"))
-      _players[0].MoveOneCell(1, _players[0].transform.forward * -1);
-    else if (data.ToLower().Contains("лев") || data.ToLower().Contains("лёв"))
-      _players[0].MoveOneCell(1, _players[0].transform.right * -1);
-    else if (data.ToLower().Contains("прав"))
-      _players[0].MoveOneCell(1, _players[0].transform.right);
+    {
+      LastMoveWasSucceed = _players[0].MoveOneCell(1, _players[0].transform.forward);
+      return LastMoveWasSucceed;
+    }
+
+    if (data.ToLower().Contains("зад"))
+    {
+      LastMoveWasSucceed = _players[0].MoveOneCell(1, _players[0].transform.forward * -1);
+      return LastMoveWasSucceed;
+    }
+
+    if (data.ToLower().Contains("лев") || data.ToLower().Contains("лёв"))
+    {
+      LastMoveWasSucceed = _players[0].MoveOneCell(1, _players[0].transform.right * -1);
+      return LastMoveWasSucceed;
+    }
+
+    LastMoveWasSucceed = data.ToLower().Contains("прав") && _players[0].MoveOneCell(1, _players[0].transform.right);
+    return LastMoveWasSucceed;
   }
 
   public string GetFreeDirections()
@@ -72,5 +86,5 @@ public class GameManager : MonoBehaviour
   }
 
   public void MakeLastMove() =>
-    MovePlayer(_lastMove);
+    LastMoveWasSucceed = MovePlayer(_lastMove);
 }
